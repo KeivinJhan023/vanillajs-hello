@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./style.css" />
+    <title>Generador de Excusas</title>
+  </head>
+  <body>
+    <h1>Generador de Excusas</h1>
+    <p id="excusa"></p>
+    <button id="generarExcusa">Generar Excusa</button>
+    <script>
+      // Array de excusas
+      const excusas = [
+        "Se me olvidó poner la alarma y me quedé dormido/a.",
+        "Mi perro comió mi tarea.",
+        "Hubo un embotellamiento en el tráfico.",
+        "El internet se cayó y no pude enviar el correo.",
+        "Olvidé la fecha de entrega.",
+        "Mi abuela está enferma y necesitaba cuidarla.",
+        "Perdí mi teléfono y perdí todos mis recordatorios.",
+        "Mi computadora se congeló y perdí todo el trabajo.",
+        "Tuve un problema familiar inesperado.",
+        "Mi jefe me pidió que hiciera algo urgente en el último minuto.",
+      ];
+
+      function generarExcusa() {
+        const index = Math.floor(Math.random() * excusas.length);
+        document.getElementById("excusa").textContent = excusas[index];
+      }
+
+      document
+        .getElementById("generarExcusa")
+        .addEventListener("click", generarExcusa);
+
+      window.addEventListener("beforeunload", function(event) {
+        generarExcusa();
+      });
+    </script>
+  </body>
+</html>
