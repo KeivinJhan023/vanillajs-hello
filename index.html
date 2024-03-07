@@ -1,62 +1,32 @@
 <!DOCTYPE html>
-<html lang="es">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Generador de Excusas</title>
-  </head>
-  <body>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            text-align: center;
-        }
-        #excusa {
-            font-size: 24px;
-            margin-bottom: 20px;
-        }
-        button {
-            font-size: 18px;
-            padding: 10px 20px;
-            background-color: #007bff;
-            color: #fff;
-            border: none;
-            cursor: pointer;
-        }
-        button:hover {
-            background-color: #0056b3;
-        }
-    </style>
-    <h1>Generador de Excusas</h1>
-    <p id="excusa"></p>
-    <button id="generarExcusa">Generar Excusa</button>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Excuse Generator</title>
+</head>
+<body>
+    <h1>Excuse Generator</h1>
+    <p id="excuse">Presiona el botón para generar una excusa</p>
+    <button onclick="generateExcuse()">Generar Excusa</button>
+
     <script>
-      // Array de excusas
-      const excusas = [
-        "Se me olvidó poner la alarma y me quedé dormido/a.",
-        "Mi perro comió mi tarea.",
-        "Hubo un embotellamiento en el tráfico.",
-        "El internet se cayó y no pude enviar el correo.",
-        "Olvidé la fecha de entrega.",
-        "Mi abuela está enferma y necesitaba cuidarla.",
-        "Perdí mi teléfono y perdí todos mis recordatorios.",
-        "Mi computadora se congeló y perdí todo el trabajo.",
-        "Tuve un problema familiar inesperado.",
-        "Mi jefe me pidió que hiciera algo urgente en el último minuto.",
-      ];
+        function generateExcuse() {
+            let who = ['El perro', 'Mi abuela', 'Su tortuga', 'Mi pájaro'];
+            let action = ['se comió', 'orinó en', 'aplastó', 'rompió'];
+            let what = ['mi tarea', 'las llaves', 'el auto'];
+            let when = ['antes de la clase', 'justo a tiempo', 'cuando terminé', 'durante mi almuerzo', 'mientras rezaba'];
 
-      function generarExcusa() {
-        const index = Math.floor(Math.random() * excusas.length);
-        document.getElementById("excusa").textContent = excusas[index];
-      }
+            let randomWhoIndex = Math.floor(Math.random() * who.length);
+            let randomActionIndex = Math.floor(Math.random() * action.length);
+            let randomWhatIndex = Math.floor(Math.random() * what.length);
+            let randomWhenIndex = Math.floor(Math.random() * when.length);
 
-      document
-        .getElementById("generarExcusa")
-        .addEventListener("click", generarExcusa);
+            let excuse = who[randomWhoIndex] + ' ' + action[randomActionIndex] + ' ' + what[randomWhatIndex] + ' ' + when[randomWhenIndex];
 
-      window.addEventListener("beforeunload", function(event) {
-        generarExcusa();
-      });
+            document.getElementById('excuse').innerText = excuse;
+        }
     </script>
-  </body>
+</body>
 </html>
+
